@@ -2,7 +2,7 @@
 # multi-stage builds #
 ######################
 # 1st build - image from it will be deleted after build thus saving the memory by excluding the cache of npm 
-FROM node:20 as build
+FROM node:20 AS build
 WORKDIR /opt/server
 COPY package.json .
 COPY *.js .
