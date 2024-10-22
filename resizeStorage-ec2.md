@@ -35,3 +35,9 @@ For the /var filesystem:
 ```
 sudo xfs_growfs /var
 ```
+
+To verify the extended size
+
+```
+df -hT
+```
