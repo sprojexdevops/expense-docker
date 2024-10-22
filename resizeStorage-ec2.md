@@ -5,9 +5,13 @@ check the partitions
 lsblk
 ```
 
-Use a tool like growpart to resize the existing partition to fill the available space.This will resize the fourth partition (nvme0n1p4) to use the remaining unallocated space on the disk.
+Use a tool like growpart to resize the existing partition to fill the available space.This will resize the fourth partition (nvme0n1p4) to use the remaining unallocated space on the disk. Name of the partition can be different (eg: xvda) based on the server
 ```
 sudo growpart /dev/nvme0n1 4
+```
+If the name of partition is different
+```
+sudo growpart /dev/xvda 4
 ```
 
 Extend the Logical Volumes
