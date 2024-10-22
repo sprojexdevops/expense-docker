@@ -1,9 +1,26 @@
 FROM mysql:8.0
-ENV MYSQL_ROOT_PASSWORD=ExpenseApp@1 
+ENV MYSQL_ROOT_PASSWORD=ExpenseApp@1
+RUN groupadd expense && useradd -g expense expense && \
+    chown -R expense:expense /var/libmysql /var/lib/mysqld /docker-entrypoint-initdb.d
 ADD scripts/*.sql /docker-entrypoint-initdb.d
+USER expense
     # MYSQL_DATABASE=transactions \
     # MYSQL_USER=expense \
     # MYSQL_PASSWORD=ExpenseApp@1
 
 # Initializing a fresh instance
 # When a container is started for the first time, a new database with the specified name will be created and initialized with the provided configuration variables. Furthermore, it will execute files with extensions .sh, .sql and .sql.gz that are found in /docker-entrypoint-initdb.d.
+
+
+########################
+# before best practice #
+########################
+# FROM mysql:8.0
+# ENV MYSQL_ROOT_PASSWORD=ExpenseApp@1 
+# ADD scripts/*.sql /docker-entrypoint-initdb.d
+#     # MYSQL_DATABASE=transactions \
+#     # MYSQL_USER=expense \
+#     # MYSQL_PASSWORD=ExpenseApp@1
+
+# # Initializing a fresh instance
+# # When a container is started for the first time, a new database with the specified name will be created and initialized with the provided configuration variables. Furthermore, it will execute files with extensions .sh, .sql and .sql.gz that are found in /docker-entrypoint-initdb.d.
